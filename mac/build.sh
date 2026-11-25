@@ -5,7 +5,10 @@ cd "$(dirname "$0")"
 APP=StudyLens.app
 rm -rf $APP
 mkdir -p $APP/Contents/MacOS
-swiftc -O -swift-version 5 -target arm64-apple-macos14.0 Sources/main.swift -o $APP/Contents/MacOS/StudyLens
+# Universal binary: Apple silicon + Intel
+swiftc -O -swift-version 5 -target arm64-apple-macos14.0 Sources/main.swift -o /tmp/studylens-arm64
+swiftc -O -swift-version 5 -target x86_64-apple-macos14.0 Sources/main.swift -o /tmp/studylens-x86_64
+lipo -create /tmp/studylens-arm64 /tmp/studylens-x86_64 -output $APP/Contents/MacOS/StudyLens
 cat > $APP/Contents/Info.plist <<EOF
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
