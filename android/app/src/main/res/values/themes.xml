@@ -1,0 +1,9 @@
+<resources>
+    <style name="Theme.StudyLens" parent="android:Theme.Material.Light.NoActionBar">
+        <item name="android:windowBackground">@color/bg</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@color/bg</item>
+        <item name="android:windowLightStatusBar">true</item>
+    </style>
+    <style name="Theme.StudyLens.Transparent" parent="android:Theme.Translucent.NoTitleBar" />
+</resources>

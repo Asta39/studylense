@@ -1,0 +1,15 @@
+.DS_Store
+# macOS
+mac/StudyLens.app/
+mac/signing/
+# Android
+android/.gradle/
+android/build/
+android/app/build/
+android/local.properties
+android/.kotlin/
+*.apk
+# Windows
+windows/bin/
+windows/obj/
+windows/publish/
