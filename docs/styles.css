@@ -198,12 +198,23 @@ details p { color: var(--muted); margin: 12px 0 0; }
 
 /* Every feature */
 .all { padding: 120px 0; background: var(--card); }
-.group { font-size: 13px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin: 56px 0 14px 4px; }
-.grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; }
-.item { background: #fff; border-radius: 22px; padding: 22px; }
-.item h4 { margin: 0 0 6px; font-size: 16.5px; }
-.item p { margin: 0; color: var(--muted); font-size: 14.5px; line-height: 1.5; }
-.item .kbd { font-size: 12px; padding: 0 6px; min-width: 22px; }
+/* iOS inset grouped lists, like the Settings app */
+.lists { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; margin-top: 56px; align-items: start; }
+.group { font-size: 13px; font-weight: 500; letter-spacing: 0.02em; text-transform: uppercase; color: #6E6E73; margin: 0 0 8px 18px; }
+.ios-list { list-style: none; margin: 0; padding: 0; background: #fff; border-radius: 20px; overflow: hidden; }
+.ios-list li { display: flex; gap: 14px; align-items: flex-start; padding: 14px 18px 0 16px; }
+.ios-list li > div { flex: 1; padding-bottom: 14px; border-bottom: 0.5px solid rgba(60, 60, 67, 0.22); }
+.ios-list li:last-child > div { border-bottom: 0; }
+.ios-list h4 { margin: 2px 0 3px; font-size: 16px; font-weight: 600; letter-spacing: -0.01em; }
+.ios-list p { margin: 0; color: var(--muted); font-size: 14px; line-height: 1.45; }
+.ios-list .kbd { font-size: 11.5px; padding: 0 5px; min-width: 20px; border-radius: 5px; }
+.ic {
+  flex-shrink: 0; width: 30px; height: 30px; border-radius: 8px;
+  background: linear-gradient(180deg, #3A3A3D, #1C1C1E);
+  display: inline-flex; align-items: center; justify-content: center;
+  box-shadow: inset 0 0.5px 0 rgba(255, 255, 255, 0.25);
+}
+.ic svg { width: 18px; height: 18px; fill: none; stroke: #fff; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
 
 /* Changelog */
 .changelog { padding: 120px 0; }
@@ -232,7 +243,7 @@ details p { color: var(--muted); margin: 12px 0 0; }
 @media (max-width: 860px) {
   .hero { padding-top: 96px; }
   .feature, .statement, .gallery, .privacy, .download, .faq, .how, .all, .changelog { padding: 80px 0; }
-  .steps, .grid { grid-template-columns: 1fr; }
+  .steps, .lists { grid-template-columns: 1fr; }
   .step:not(:last-child)::after { display: none; }
   .release { padding: 24px; }
   .split { grid-template-columns: 1fr; gap: 40px; }
