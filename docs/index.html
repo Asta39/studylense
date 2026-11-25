@@ -20,17 +20,8 @@
   <script>document.documentElement.classList.add("js")</script>
 </head>
 <body>
-  <header class="nav">
-    <div class="nav-inner">
-      <a class="brand" href="#top"><img src="assets/icon.png" alt="" width="30" height="30"> StudyLens</a>
-      <nav aria-label="Main">
-        <a href="#features">Features</a>
-        <a href="#platforms">Platforms</a>
-        <a href="#privacy">Privacy</a>
-        <a href="#faq">FAQ</a>
-        <a class="pill small" href="#download">Download</a>
-      </nav>
-    </div>
+  <header class="glass-bar">
+    <a class="glass-pill" href="#top" aria-label="StudyLens, back to top"><img src="assets/icon.png" alt="" width="28" height="28"><span>StudyLens</span></a>
   </header>
 
   <main id="top">
@@ -54,6 +45,37 @@
       <div class="wrap">
         <p class="huge reveal">One tap.</p>
         <p class="statement-text reveal">Every question on screen, answered.<br><span class="soft">Multiple choice gets the letter. Calculations get the result and the steps. Definitions get a clean sentence.</span></p>
+      </div>
+    </section>
+
+    <!-- How it works -->
+    <section class="how" id="how">
+      <div class="wrap">
+        <p class="eyebrow center reveal">How StudyLens works</p>
+        <h2 class="headline center reveal">Four steps, about three seconds.</h2>
+        <p class="lede center reveal">No account and no StudyLens server. Your device, your Groq key, and one screenshot at a time.</p>
+        <ol class="steps">
+          <li class="step reveal">
+            <span class="step-n">1</span>
+            <h3>You ask</h3>
+            <p>Tap the lens on Android, press <span class="kbd">Ctrl</span> <span class="kbd">Alt</span> <span class="kbd">B</span> on Windows or <span class="kbd">⌃</span> <span class="kbd">⌥</span> <span class="kbd">B</span> on Mac. Pick <b>Full screen</b>, or drag a box around <b>One question</b>.</p>
+          </li>
+          <li class="step reveal">
+            <span class="step-n">2</span>
+            <h3>One screenshot</h3>
+            <p>StudyLens hides its own bubble, takes a single screenshot and keeps it sharp at full resolution so small exam print stays readable. Nothing is recorded.</p>
+          </li>
+          <li class="step reveal">
+            <span class="step-n">3</span>
+            <h3>Groq reads it</h3>
+            <p>The image goes straight from your device to a vision model on Groq, chosen automatically for your key. It's asked to solve, check its work, and say what kind of question each one is.</p>
+          </li>
+          <li class="step reveal">
+            <span class="step-n">4</span>
+            <h3>You learn it</h3>
+            <p>The answer appears in a card over what you're reading — a letter, a result with working steps, or a short sentence — and is saved to your history for revision.</p>
+          </li>
+        </ol>
       </div>
     </section>
 
@@ -159,6 +181,50 @@
       </div>
     </section>
 
+    <!-- Every feature -->
+    <section class="all" id="all-features">
+      <div class="wrap">
+        <p class="eyebrow center reveal">Everything it does</p>
+        <h2 class="headline center reveal">Every feature, explained.</h2>
+
+        <h3 class="group reveal">Capturing</h3>
+        <div class="grid">
+          <div class="item reveal"><h4>Full screen</h4><p>One screenshot of the whole screen. StudyLens finds every question on it — usually two or three — and answers each separately.</p></div>
+          <div class="item reveal"><h4>One question</h4><p>The screen freezes and dims. Drag a box around a single question, adjust it if you like, then tap <b>Answer this</b> (or press Enter on Windows).</p></div>
+          <div class="item reveal"><h4>Floating lens (Android)</h4><p>A glass lens docked on the screen edge over any app. Drag it up or down, flick it to the other side and it snaps to the edge. Tap it for the menu.</p></div>
+          <div class="item reveal"><h4>Lens menu (Android)</h4><p>Full screen, One question, <b>Open app</b> and <b>Hide bubble</b> — everything one tap away, with a dimmed background so you stay focused.</p></div>
+          <div class="item reveal"><h4>Global shortcuts (Windows)</h4><p><span class="kbd">Ctrl</span> <span class="kbd">Alt</span> <span class="kbd">B</span> for one question and <span class="kbd">Ctrl</span> <span class="kbd">Alt</span> <span class="kbd">Shift</span> <span class="kbd">B</span> for the whole screen, from any app. If another app owns the shortcut, StudyLens tells you.</p></div>
+          <div class="item reveal"><h4>Tray menu (Windows)</h4><p>Click the tray icon for a compact menu: both capture modes with their shortcuts, History, Settings and Quit. Shows whether you're ready and which model is in use.</p></div>
+          <div class="item reveal"><h4>Menu bar (macOS)</h4><p>A small icon in the menu bar. Press <span class="kbd">⌃</span> <span class="kbd">⌥</span> <span class="kbd">B</span> with your cursor over a question and it captures the area around it.</p></div>
+          <div class="item reveal"><h4>Multi-monitor &amp; high DPI</h4><p>Captures the screen your cursor is on and places cards in real pixels, so it lines up on scaled and mixed displays.</p></div>
+        </div>
+
+        <h3 class="group reveal">Answers</h3>
+        <div class="grid">
+          <div class="item reveal"><h4>Multiple choice</h4><p>A round letter badge with the option text beside it. “Select all that apply” gets every correct letter, like <b>A, C</b>.</p></div>
+          <div class="item reveal"><h4>Worked problems</h4><p>Calculations show the final result for each part — (i), (ii), (iii) — each on its own line, then 2–5 numbered <b>Working</b> steps.</p></div>
+          <div class="item reveal"><h4>Short answers</h4><p>Definitions and one-word answers come back as a clean sentence in an Answer box, ready to copy into your notes.</p></div>
+          <div class="item reveal"><h4>Explanations</h4><p>A one-line reason under every answer. Turn it off in Settings if you just want the result.</p></div>
+          <div class="item reveal"><h4>Checked before shown</h4><p>The model is asked to solve and verify before replying, so you get the final result — not “wait, let me recalculate”.</p></div>
+          <div class="item reveal"><h4>Summary row</h4><p>Full-screen scans start with chips like <b>1 · C</b>, <b>2 · worked</b>, <b>3 · A, C</b> so you see every answer at a glance.</p></div>
+          <div class="item reveal"><h4>Copy, Next, Scan again</h4><p>Copy an answer with its steps, jump to the next question, or rescan the page. On Windows, choose a card beside the question or a side panel.</p></div>
+          <div class="item reveal"><h4>Clear error messages</h4><p>No silent failures. If Groq is busy, the rate limit is hit, or no question was found, the card says so — with what to try next.</p></div>
+        </div>
+
+        <h3 class="group reveal">The app</h3>
+        <div class="grid">
+          <div class="item reveal"><h4>History</h4><p>Every scan is saved with its screenshot and answers, grouped by day. Filter by One question or Full screen; search on Windows; tap to enlarge the screenshot.</p></div>
+          <div class="item reveal"><h4>Delete &amp; clear</h4><p>Remove a single scan or clear everything from Settings. It's all stored on your device.</p></div>
+          <div class="item reveal"><h4>Automatic model choice</h4><p>StudyLens asks Groq which models your key can use and picks one that reads images. If it's retired, it moves to the next — no update needed.</p></div>
+          <div class="item reveal"><h4>Guided setup</h4><p>A short first run: permissions on Android, your Groq key on every platform, and the shortcuts on Windows. Nothing to configure after that.</p></div>
+          <div class="item reveal"><h4>Bubble size (Android)</h4><p>Small, Medium or Large, so the lens is easy to hit without covering what you're reading.</p></div>
+          <div class="item reveal"><h4>Start with Windows</h4><p>Optional. StudyLens starts quietly in the tray when you sign in, and closing the window keeps it running there.</p></div>
+          <div class="item reveal"><h4>Fits any screen</h4><p>The Android interface keeps its proportions on every phone and display-size setting, and text never drops below a readable size.</p></div>
+          <div class="item reveal"><h4>Silver, glass &amp; Agrave Pro</h4><p>One calm look across all three platforms: soft silver, a glass focus-frame icon, dark pill buttons and Agrave Pro headings.</p></div>
+        </div>
+      </div>
+    </section>
+
     <!-- Privacy -->
     <section class="privacy" id="privacy">
       <div class="wrap narrow center">
@@ -211,6 +277,46 @@
         <details class="reveal"><summary>Why do I see a security warning when installing?</summary><p>The builds aren't signed with a paid certificate yet. On Windows choose <b>More info → Run anyway</b>; on Mac right-click the app and choose <b>Open</b>; on Android allow installs from your browser or file manager.</p></details>
         <details class="reveal"><summary>Are the answers always right?</summary><p>They're usually good, but AI can make mistakes. That's why StudyLens shows its working — check the steps, and use it to learn, not to skip learning.</p></details>
         <details class="reveal"><summary>Can I use it in a test or exam?</summary><p>Only where your school or exam rules allow it. StudyLens is built for studying, homework and practice, and its answers are always shown openly on screen.</p></details>
+      </div>
+    </section>
+
+    <!-- Changelog -->
+    <section class="changelog bg-silver" id="changelog">
+      <div class="wrap narrow">
+        <h2 class="headline center reveal">Changelog.</h2>
+        <article class="release reveal">
+          <header>
+            <h3>1.0</h3>
+            <span class="date">25 November 2026</span>
+            <a class="tag" href="https://github.com/Asta39/studylense/releases/tag/v1.0.0">v1.0.0</a>
+          </header>
+          <p class="release-lede">The first release, on Android, macOS and Windows.</p>
+          <h4>New</h4>
+          <ul>
+            <li><b>Full screen</b> and <b>One question</b> capture on every platform</li>
+            <li>Android floating lens bubble with edge snapping, a mode menu and three sizes</li>
+            <li>Windows tray app with <b>Ctrl+Alt+B</b> and <b>Ctrl+Alt+Shift+B</b>, an answer card and a side panel</li>
+            <li>macOS menu bar app with <b>⌃⌥B</b> and an answer card beside the cursor</li>
+            <li>Typed answers: letter badges, worked results with numbered steps, short answers</li>
+            <li>History with screenshots, filters and search; settings; guided setup</li>
+            <li>Automatic Groq vision model selection with fallback</li>
+          </ul>
+          <h4>Improved during the beta</h4>
+          <ul>
+            <li>Android takes single screenshots through Accessibility instead of screen recording — no recording prompt or indicator</li>
+            <li>Full-screen captures are sent at full resolution, so small print is read correctly</li>
+            <li>The interface scales to the screen width, keeping the design's proportions on any display-size setting</li>
+            <li>Universal macOS build for Apple silicon and Intel</li>
+          </ul>
+          <h4>Fixed</h4>
+          <ul>
+            <li>Android: a crash right after capture on some phones</li>
+            <li>Android: the drag-to-select overlay sitting below the status bar on Android 15+</li>
+            <li>Android: no more “wait, let me recalculate” in answers</li>
+            <li>macOS: the answer card opening off-screen, and screen access resetting after updates</li>
+          </ul>
+        </article>
+        <p class="fine center reveal"><a href="https://github.com/Asta39/studylense/releases">Every release on GitHub</a></p>
       </div>
     </section>
   </main>
