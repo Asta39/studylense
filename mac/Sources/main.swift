@@ -149,6 +149,12 @@ enum Capture {
 
 // MARK: - UI
 
+/// Shown across the app: StudyLens is a learning tool, not a way to cheat.
+enum Disclaimer {
+    static let short = "For learning and practice only — never for cheating."
+    static let full = "StudyLens is an educational tool for studying, homework and practice. Don't use it in exams, tests, quizzes or any graded work, or anywhere your school's rules don't allow it. Using it to cheat is academic malpractice. AI answers can be wrong, so always check the working."
+}
+
 struct PopoverView: View {
     @ObservedObject var state: AppState
     @State private var keyField = ""
@@ -163,6 +169,7 @@ struct PopoverView: View {
                 Button("Ask now", action: onAsk).disabled(state.busy || state.apiKey.isEmpty)
             }
             if state.apiKey.isEmpty {
+                Text(Disclaimer.full).font(.caption).foregroundStyle(.secondary).fixedSize(horizontal: false, vertical: true)
                 Text("Paste your Groq API key (console.groq.com/keys):").font(.caption)
                 HStack {
                     SecureField("gsk_…", text: $keyField)
@@ -184,6 +191,7 @@ struct PopoverView: View {
                     }
                 }
             }
+            Text(Disclaimer.short).font(.caption2).foregroundStyle(.secondary)
             HStack {
                 if !state.apiKey.isEmpty { Button("Change key") { state.apiKey = "" } }
                 Button("Clear history") { state.history.removeAll() }
@@ -205,7 +213,7 @@ struct AnswerCard: View {
             VStack(alignment: .leading, spacing: 4) {
                 Text(answer).font(.system(size: 15, weight: .semibold)).lineLimit(2)
                 if !reason.isEmpty { Text(reason).font(.system(size: 12)).foregroundStyle(.secondary).lineLimit(4) }
-                Text("Click for full explanation").font(.caption2).foregroundStyle(.tertiary)
+                Text("Click for full explanation · learning use only").font(.caption2).foregroundStyle(.tertiary)
             }
             .frame(width: 300, alignment: .leading)
             Button(action: onClose) { Image(systemName: "xmark.circle.fill").foregroundStyle(.secondary) }

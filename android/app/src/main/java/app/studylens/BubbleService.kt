@@ -418,6 +418,7 @@ class BubbleService : Service() {
         }
         panel.addView(View(this).apply { background = round(Color.parseColor("#C4C4C9"), 3f) }, LinearLayout.LayoutParams(dp(40), dp(5)).apply { gravity = Gravity.CENTER_HORIZONTAL; bottomMargin = dp(8) })
         build(panel)
+        panel.addView(text(Disclaimer.SHORT, 11f, SUB).apply { gravity = Gravity.CENTER; setPadding(0, dp(10), 0, 0) }, LinearLayout.LayoutParams(-1, -2))
         val maxH = (wm.currentWindowMetrics.bounds.height() * 0.8f).toInt()
         scrim.addView(panel, FrameLayout.LayoutParams(-1, -2, Gravity.BOTTOM))
         panel.post { if (panel.height > maxH) panel.layoutParams = (panel.layoutParams as FrameLayout.LayoutParams).apply { height = maxH } }

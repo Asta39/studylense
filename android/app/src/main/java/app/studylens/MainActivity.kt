@@ -252,6 +252,7 @@ fun Welcome(onNext: () -> Unit) {
             Title("Point at a question.\nUnderstand the answer.", Modifier.fillMaxWidth().padding(horizontal = 32.dp), 40, TextAlign.Center)
             T("A floating lens that reads questions on your screen and explains them — one at a time, or the whole page at once.",
                 14, Sub, modifier = Modifier.padding(horizontal = 32.dp, vertical = 14.dp), align = TextAlign.Center)
+            T(Disclaimer.SHORT, 12, Sub, FontWeight.Medium, Modifier.fillMaxWidth().padding(horizontal = 32.dp), align = TextAlign.Center)
             Row(Modifier.fillMaxWidth().padding(vertical = 18.dp), horizontalArrangement = Arrangement.Center) {
                 Box(Modifier.size(18.dp, 6.dp).clip(CircleShape).background(Ink)); Spacer(Modifier.width(6.dp))
                 Box(Modifier.size(6.dp).clip(CircleShape).background(Color(0xFFB9B9BE))); Spacer(Modifier.width(6.dp))
@@ -274,6 +275,7 @@ fun SetupScreen(store: Store, tick: Int, onBack: () -> Unit, onDone: () -> Unit)
     val overlayOk = remember(tick) { Settings.canDrawOverlays(ctx) }
     val shotOk = remember(tick) { ShotService.isEnabled(ctx) }
     var key by remember { mutableStateOf(store.apiKey) }
+    var agreed by remember { mutableStateOf(store.onboarded) }
     Column(Modifier.fillMaxSize().systemBarsPadding().imePadding().verticalScroll(rememberScrollState())) {
         Row(Modifier.padding(start = 24.dp, top = 12.dp), verticalAlignment = Alignment.CenterVertically) {
             RoundIcon("‹", onClick = onBack); Spacer(Modifier.width(12.dp)); T("Step 2 of 2", 13, Sub)
@@ -298,9 +300,29 @@ fun SetupScreen(store: Store, tick: Int, onBack: () -> Unit, onDone: () -> Unit)
                 Spacer(Modifier.height(12.dp))
                 KeyField(key) { key = it; store.apiKey = it }
             }
+            DisclaimerCard(agreed) { agreed = it }
         }
         Spacer(Modifier.weight(1f).heightIn(min = 24.dp))
-        PillButton("Start the lens  →", modifier = Modifier.padding(16.dp).fillMaxWidth(), enabled = overlayOk && shotOk && key.isNotBlank(), onClick = onDone)
+        PillButton("Start the lens  →", modifier = Modifier.padding(16.dp).fillMaxWidth(), enabled = overlayOk && shotOk && key.isNotBlank() && agreed, onClick = onDone)
+    }
+}
+
+@Composable
+fun DisclaimerCard(agreed: Boolean, onChange: (Boolean) -> Unit) = Card {
+    Row(verticalAlignment = Alignment.CenterVertically) {
+        Box(Modifier.size(44.dp).clip(CircleShape).background(Chip), contentAlignment = Alignment.Center) { T("✎", 18) }
+        Column(Modifier.weight(1f).padding(start = 14.dp)) {
+            T("Educational use only", 15, weight = FontWeight.SemiBold)
+            T("Not for exams, tests or graded work", 12, Sub)
+        }
+    }
+    T(Disclaimer.FULL, 12, Sub, modifier = Modifier.padding(top = 12.dp))
+    Row(Modifier.padding(top = 12.dp).fillMaxWidth().clip(RoundedCornerShape(14.dp)).background(Color.White).clickable { onChange(!agreed) }.padding(12.dp),
+        verticalAlignment = Alignment.CenterVertically) {
+        Box(Modifier.size(22.dp).clip(RoundedCornerShape(6.dp)).background(if (agreed) Ink else Chip), contentAlignment = Alignment.Center) {
+            if (agreed) T("✓", 13, Color.White, FontWeight.Bold)
+        }
+        T("I'll use StudyLens to learn, not to cheat", 13, weight = FontWeight.Medium, modifier = Modifier.padding(start = 10.dp))
     }
 }
 
@@ -371,7 +393,8 @@ fun HomeScreen(store: Store, history: List<Scan>, tick: Int, onNav: (Screen) -> 
                     history.take(3).forEachIndexed { i, s -> ScanRow(s, i < minOf(2, history.size - 1)) { onOpen(s.id) } }
                 }
             }
-            Spacer(Modifier.height(20.dp))
+            T(Disclaimer.SHORT, 12, Sub, modifier = Modifier.fillMaxWidth().padding(horizontal = 24.dp, vertical = 16.dp), align = TextAlign.Center)
+            Spacer(Modifier.height(8.dp))
         }
         NavBar(Screen.Home, onNav)
     }
@@ -533,6 +556,9 @@ fun SettingsScreen(store: Store, onNav: (Screen) -> Unit, onCleared: () -> Unit)
                 Row2(if (confirmClear) "Tap again to clear everything" else "Clear history", { T("›", 18, Color(0xFF8A8A90)) }, divider = false) {
                     if (confirmClear) { store.clear(); onCleared(); confirmClear = false } else confirmClear = true
                 }
+            }
+            Section("Educational use only") {
+                T(Disclaimer.FULL, 13, Sub, modifier = Modifier.padding(vertical = 14.dp))
             }
             Spacer(Modifier.height(20.dp))
         }

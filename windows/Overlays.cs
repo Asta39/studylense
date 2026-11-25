@@ -34,6 +34,12 @@ public static class Overlays
         return row;
     }
 
+    static TextBlock Note()
+    {
+        var t = Ui.T(Disclaimer.Short, 11, Ui.Sub); t.TextAlignment = TextAlignment.Center; t.Margin = new Thickness(0, 10, 0, 0);
+        return t;
+    }
+
     public static void ShowReading(string text)
     {
         pill?.Close();
@@ -71,6 +77,7 @@ public static class Overlays
         var nxt = Ui.Pill("Next question", true, () => { w.Close(); next(); }, hint: "Ctrl+Alt+B");
         Grid.SetColumn(nxt, 1); row.Children.Add(copy); row.Children.Add(nxt);
         body.Children.Add(row);
+        body.Children.Add(Note());
         w.Loaded += (_, _) => Native.PlaceNear(w, anchor);
         w.Show(); w.Activate(); current = w;
     }
@@ -105,6 +112,7 @@ public static class Overlays
         var open = Ui.Pill("Open in app", false, () => { w.Close(); openInApp(scan.Id); }, 42); open.Margin = new Thickness(0, 0, 8, 0);
         var scanAgain = Ui.Pill("Scan again", true, () => { w.Close(); again(); }, 42, "Ctrl+Alt+Shift+B");
         Grid.SetColumn(scanAgain, 1); buttons.Children.Add(open); buttons.Children.Add(scanAgain);
+        var note = Note(); DockPanel.SetDock(note, Dock.Bottom); body.Children.Add(note);
         DockPanel.SetDock(buttons, Dock.Bottom); body.Children.Add(buttons);
 
         var list = new StackPanel();

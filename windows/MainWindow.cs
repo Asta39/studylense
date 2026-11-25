@@ -68,6 +68,8 @@ public class MainWindow : Window
         }
         var tips = Ui.Box(Ui.Stack(4, Orientation.Vertical, Ui.T("Shortcuts", 12, bold: true), Ui.T("Ctrl+Alt+B · one question\nCtrl+Alt+Shift+B · full screen", 11.5, Ui.Sub)), Ui.Card, 14, 12);
         DockPanel.SetDock(tips, Dock.Bottom); s.Children.Add(tips);
+        var note = Ui.T(Disclaimer.Short, 11, Ui.Sub); note.Margin = new Thickness(6, 0, 6, 10);
+        DockPanel.SetDock(note, Dock.Bottom); s.Children.Add(note);
         return new Border { BorderBrush = new SolidColorBrush(Ui.Hex("#E0E0E4")), BorderThickness = new Thickness(0, 0, 1, 0), Child = s };
     }
 
@@ -89,20 +91,22 @@ public class MainWindow : Window
         var form = new DockPanel { Margin = new Thickness(24, 30, 40, 32), LastChildFill = false };
         var key = new PasswordBox { Password = Store.Settings.ApiKey, FontSize = 14, Padding = new Thickness(12, 10, 12, 10), BorderBrush = new SolidColorBrush(Ui.Hex("#D6D6DA")), Background = Ui.White };
         var start = Ui.Pill("Start the lens  →", true, () => { }, 52);
+        var agree = new CheckBox { Content = Ui.T("I'll use StudyLens to learn, not to cheat", 13, bold: true), IsChecked = Store.Settings.AgreedEducationalUse, Margin = new Thickness(0, 4, 0, 0) };
 
         var top = Ui.Stack(10, Orientation.Vertical,
             Ui.T("Point at a question.\nUnderstand the answer.", 40, serif: true),
             Ui.T("StudyLens lives in your system tray. Press a shortcut over any app and it explains the question on screen.", 14, Ui.Sub),
             Ui.Box(Ui.Stack(8, Orientation.Vertical, Ui.T("Groq API key", 14, bold: true), Ui.T("Free at console.groq.com/keys", 12, Ui.Sub), key)),
             Ui.Box(ShortcutGrid()),
-            Ui.Box(Row("Start StudyLens with Windows", Ui.Toggle(Store.Settings.StartWithWindows, on => { Store.Settings.StartWithWindows = on; Store.Save(); AutoStart.Apply(on); }))));
+            Ui.Box(Row("Start StudyLens with Windows", Ui.Toggle(Store.Settings.StartWithWindows, on => { Store.Settings.StartWithWindows = on; Store.Save(); AutoStart.Apply(on); }))),
+            Ui.Box(Ui.Stack(8, Orientation.Vertical, Ui.T("Educational use only", 14, bold: true), Ui.T(Disclaimer.Full, 12, Ui.Sub), agree)));
         DockPanel.SetDock(top, Dock.Top); form.Children.Add(top);
 
-        void Refresh() => start.IsEnabled = key.Password.Trim().Length > 10;
-        key.PasswordChanged += (_, _) => Refresh(); Refresh();
+        void Refresh() => start.IsEnabled = key.Password.Trim().Length > 10 && agree.IsChecked == true;
+        key.PasswordChanged += (_, _) => Refresh(); agree.Checked += (_, _) => Refresh(); agree.Unchecked += (_, _) => Refresh(); Refresh();
         start.Click += (_, _) =>
         {
-            Store.Settings.ApiKey = key.Password.Trim(); Store.Settings.Model = ""; Store.Settings.Onboarded = true; Store.Save();
+            Store.Settings.ApiKey = key.Password.Trim(); Store.Settings.Model = ""; Store.Settings.Onboarded = true; Store.Settings.AgreedEducationalUse = true; Store.Save();
             page = "history"; Render(); Hide();
             app.StartOneHint();
         };
@@ -303,6 +307,7 @@ public class MainWindow : Window
         p.Children.Add(Section("App",
             Row("Start StudyLens with Windows", Ui.Toggle(Store.Settings.StartWithWindows, on => { Store.Settings.StartWithWindows = on; Store.Save(); AutoStart.Apply(on); })),
             Row("Quit StudyLens", Ui.Pill("Quit", false, app.Quit, 30))));
+        p.Children.Add(Section("Educational use only", Ui.T(Disclaimer.Full, 13, Ui.Sub)));
         return new ScrollViewer { Content = p, VerticalScrollBarVisibility = ScrollBarVisibility.Auto };
     }
 }

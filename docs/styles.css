@@ -180,6 +180,20 @@ b { font-weight: 600; }
 .fact h3 { margin: 0 0 6px; font-size: 17px; }
 .fact p { margin: 0; font-size: 15px; color: var(--muted); }
 
+/* Educational-use disclaimer */
+.edu-chip {
+  display: inline-flex; align-items: center; gap: 10px; flex-wrap: wrap; justify-content: center;
+  margin: 18px auto 0; padding: 8px 16px 8px 8px; border-radius: 999px;
+  background: #fff; border: 1px solid var(--line); font-size: 14px; color: var(--muted);
+}
+.edu-chip span { background: var(--ink); color: #fff; font-weight: 600; font-size: 12px; padding: 4px 10px; border-radius: 999px; }
+.edu { padding: var(--section) 0; background: var(--bg); }
+.edu-list { list-style: none; padding: 0; margin: clamp(28px, 4vw, 40px) auto 0; max-width: 620px; text-align: left; background: var(--card); border-radius: 20px; overflow: hidden; }
+.edu-list li { padding: 16px 20px 16px 50px; position: relative; font-size: 16px; border-bottom: 0.5px solid rgba(60, 60, 67, 0.22); }
+.edu-list li:last-child { border-bottom: 0; }
+.edu-list li::before { content: "!"; position: absolute; left: 16px; top: 16px; width: 22px; height: 22px; border-radius: 7px; background: var(--ink); color: #fff; font-weight: 700; font-size: 13px; display: flex; align-items: center; justify-content: center; }
+.foot-note { flex-basis: 100%; order: 3; font-size: 13px; }
+
 /* Download */
 .download { padding: var(--section) 0; }
 .platforms { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: var(--gap); margin-top: clamp(36px, 5vw, 56px); }

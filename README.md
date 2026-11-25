@@ -21,6 +21,9 @@ A free, open-source study helper for Android, macOS and Windows. A floating lens
 
 </div>
 
+> [!IMPORTANT]
+> **Educational use only.** StudyLens is a learning tool for studying, homework and practice. It must not be used for cheating or any other academic malpractice — not in exams, tests, quizzes or graded work, and not anywhere your school's rules don't allow it. See [Educational use only](#educational-use-only).
+
 ---
 
 ## Overview
@@ -38,6 +41,8 @@ There's no StudyLens account and no server in between: your device talks to Groq
 | **Windows** | Windows 10 / 11, x64 | [StudyLens-Windows-x64.exe](https://github.com/Asta39/studylense/releases/latest/download/StudyLens-Windows-x64.exe) |
 
 All versions and release notes: **[Releases](https://github.com/Asta39/studylense/releases)**. You'll also need a free **[Groq API key](https://console.groq.com/keys)**.
+
+By downloading or building StudyLens you agree to use it for **educational purposes only**.
 
 ## Features
 
@@ -169,9 +174,17 @@ All three apps share the same flow: **capture → JPEG (≤2400 px) → Groq cha
 - The screenshot goes from your device **directly to Groq** with your own key; there is no StudyLens server.
 - History stays on your device (Android: app storage; Windows: `%AppData%\StudyLens`; macOS: memory only) and can be cleared in Settings.
 
-## Responsible use
+## Educational use only
 
-StudyLens is built for studying, homework and practice, and always shows its answers openly on screen. AI can be wrong, so check the working. Only use it where your school's or exam's rules allow.
+StudyLens is an **educational project**. It exists to help you understand questions while you study, revise and practise — that's why every answer shows its working.
+
+- **Do not** use StudyLens to cheat, or for any other academic malpractice.
+- **Do not** use it in exams, tests, quizzes, or any graded or assessed work.
+- Follow the rules of your school, university or exam board. If they don't allow tools like this, don't use it.
+- AI answers can be wrong. Read the working and make sure you understand it.
+- You are responsible for how you use StudyLens. The authors and contributors accept no liability for misuse.
+
+Each app shows this notice too: on first run (Android and Windows ask you to agree before you start), in Settings, and under every answer.
 
 ## Credits
 

@@ -8,6 +8,15 @@ using System.Text.RegularExpressions;
 
 namespace StudyLens;
 
+/// <summary>Shown across the app: StudyLens is a learning tool, not a way to cheat.</summary>
+public static class Disclaimer
+{
+    public const string Short = "For learning and practice only — never for cheating.";
+    public const string Full = "StudyLens is an educational tool for studying, homework and practice. " +
+        "Don't use it in exams, tests, quizzes or any graded work, or anywhere your school's rules don't allow it. " +
+        "Using it to cheat is academic malpractice. AI answers can be wrong, so always check the working.";
+}
+
 public class Answer
 {
     public string Number { get; set; } = "";
@@ -56,6 +65,7 @@ public class Settings
     public bool Explanations { get; set; } = true;
     public bool CardNextToQuestion { get; set; } = true;
     public bool StartWithWindows { get; set; } = true;
+    public bool AgreedEducationalUse { get; set; }
 }
 
 /// <summary>Settings, history and screenshots under %AppData%\StudyLens.</summary>

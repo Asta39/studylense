@@ -16,7 +16,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=5">
+  <link rel="stylesheet" href="styles.css?v=6">
   <script>document.documentElement.classList.add("js")</script>
 </head>
 <body>
@@ -35,6 +35,7 @@
         <a class="pill ghost" href="https://github.com/Asta39/studylense">View on GitHub</a>
       </div>
       <p class="fine reveal" id="hero-note">Android 10+, macOS 14+ and Windows 10+. Bring your own free Groq key.</p>
+      <p class="edu-chip reveal"><span>Educational use only</span> For learning and practice — never for cheating.</p>
       <div class="hero-shot reveal">
         <img src="assets/banner.jpg" alt="StudyLens on Android: the welcome screen, a full-screen scan with three answers, and dragging a box around one question" width="2200" height="1240">
       </div>
@@ -244,11 +245,27 @@
       </div>
     </section>
 
+    <!-- Educational use -->
+    <section class="edu" id="educational-use">
+      <div class="wrap narrow center">
+        <p class="eyebrow reveal">Disclaimer</p>
+        <h2 class="headline reveal">For learning. Not for cheating.</h2>
+        <p class="lede reveal">StudyLens is an educational project for studying, homework and practice. It is not made for, and must not be used for, cheating or any other academic malpractice.</p>
+        <ul class="edu-list reveal">
+          <li>Don't use it in exams, tests, quizzes or any graded or assessed work.</li>
+          <li>Follow your school's, university's or exam board's rules — if they don't allow it, don't use it.</li>
+          <li>AI answers can be wrong. Read the working and make sure you understand it.</li>
+          <li>You are responsible for how you use it. The authors accept no liability for misuse.</li>
+        </ul>
+      </div>
+    </section>
+
     <!-- Download -->
     <section class="download bg-silver" id="download">
       <div class="wrap">
         <h2 class="headline center reveal">Get StudyLens.</h2>
         <p class="lede center reveal">Free and open source. You'll need a free <a href="https://console.groq.com/keys">Groq API key</a>.</p>
+        <p class="fine center reveal">By downloading, you agree to use StudyLens for <a href="#educational-use">educational purposes only</a>.</p>
         <div class="platforms">
           <article class="platform reveal" data-os="android">
             <span class="badge">Android 10+</span>
@@ -282,7 +299,7 @@
         <details class="reveal"><summary>Why does Android need Accessibility?</summary><p>It's the only way Android lets an app take a single screenshot without starting a screen recording. StudyLens uses it for that alone, and only when you tap the bubble.</p></details>
         <details class="reveal"><summary>Why do I see a security warning when installing?</summary><p>The builds aren't signed with a paid certificate yet. On Windows choose <b>More info → Run anyway</b>; on Mac right-click the app and choose <b>Open</b>; on Android allow installs from your browser or file manager.</p></details>
         <details class="reveal"><summary>Are the answers always right?</summary><p>They're usually good, but AI can make mistakes. That's why StudyLens shows its working — check the steps, and use it to learn, not to skip learning.</p></details>
-        <details class="reveal"><summary>Can I use it in a test or exam?</summary><p>Only where your school or exam rules allow it. StudyLens is built for studying, homework and practice, and its answers are always shown openly on screen.</p></details>
+        <details class="reveal"><summary>Can I use it in a test or exam?</summary><p>No. StudyLens is for educational purposes only — studying, homework and practice. Using it in exams, tests or graded work is cheating and academic malpractice. Its answers are always shown openly on screen.</p></details>
       </div>
     </section>
 
@@ -290,6 +307,19 @@
     <section class="changelog bg-silver" id="changelog">
       <div class="wrap narrow">
         <h2 class="headline center reveal">Changelog.</h2>
+        <article class="release reveal">
+          <header>
+            <h3>1.0.1</h3>
+            <span class="date">25 November 2026</span>
+            <a class="tag" href="https://github.com/Asta39/studylense/releases/tag/v1.0.1">v1.0.1</a>
+          </header>
+          <p class="release-lede">Educational use, made clear everywhere.</p>
+          <h4>New</h4>
+          <ul>
+            <li>An “educational use only” notice on the welcome screen, in Settings and under every answer, on Android, Windows and macOS</li>
+            <li>Android and Windows setup now ask you to agree to use StudyLens to learn, not to cheat</li>
+          </ul>
+        </article>
         <article class="release reveal">
           <header>
             <h3>1.0</h3>
@@ -330,11 +360,12 @@
   <footer class="footer">
     <div class="wrap foot">
       <span class="brand small"><img src="assets/icon.png" alt="" width="22" height="22"> StudyLens</span>
+      <span class="foot-note">Educational use only. Not for cheating or academic malpractice.</span>
       <span>Made by <a href="https://github.com/Asta39">Ian Love</a> · <a href="https://github.com/Asta39/studylense">Source on GitHub</a> · <a href="https://github.com/Asta39/studylense/issues/new">Report an issue</a></span>
     </div>
   </footer>
 
-  <script src="script.js?v=5"></script>
-  <script src="liquid-glass.js?v=5"></script>
+  <script src="script.js?v=6"></script>
+  <script src="liquid-glass.js?v=6"></script>
 </body>
 </html>

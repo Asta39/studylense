@@ -6,6 +6,14 @@ import org.json.JSONArray
 import org.json.JSONObject
 import java.io.File
 
+/** Shown across the app: StudyLens is a learning tool, not a way to cheat. */
+object Disclaimer {
+    const val SHORT = "For learning and practice only — never for cheating."
+    const val FULL = "StudyLens is an educational tool for studying, homework and practice. " +
+        "Don't use it in exams, tests, quizzes or any graded work, or anywhere your school's rules don't allow it. " +
+        "Using it to cheat is academic malpractice. AI answers can be wrong, so always check the working."
+}
+
 /** One answered question. */
 data class Answer(
     val number: String,
